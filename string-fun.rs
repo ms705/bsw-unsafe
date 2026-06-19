@@ -1,6 +1,9 @@
 use std::slice;
 
-struct S1 { ptr: *mut u8, len: usize }
+struct S1 {
+    ptr: *mut u8,
+    len: usize,
+}
 
 impl S1 {
     pub fn from(p: *mut u8, l: usize) -> S1 {
@@ -15,7 +18,8 @@ impl S1 {
 }
 
 fn main() {
-    let s1 = S1::from(String::from("hello").as_mut_ptr(), 6);
+    let mut s = String::from("hello");
+    let s1 = S1::from(s.as_mut_ptr(), 6);
 
     // print string as hexadecimal characters
     println!("{:x?}", s1.get())
